@@ -1,6 +1,6 @@
 " Andrew Geist's .vimrc file
 "
-" Last change: Thu 16 Mar 2017 08:57:43 PM EDT	
+" Last change: Sat 18 Mar 2017 11:24:31 AM EDT 
 "
 " To use it, copy it to
 "     for Unix and OS/2:  ~/.vimrc
@@ -36,10 +36,6 @@ set incsearch		" do incremental searching
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
-
-" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
-" so that you can undo CTRL-U after inserting a line break.
-inoremap <C-U> <C-G>u<C-U>
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
@@ -100,13 +96,6 @@ if has('langmap') && exists('+langnoremap')
   set langnoremap
 endif
 
-
-" Add optional packages.
-"
-" The matchit plugin makes the % command work better, but it is not backwards
-" compatible.
-packadd matchit
-
 " Save backup/swap files to a specific directory vice wherever you're
 " currently working. Reference:
 " stackoverflow.com/questions/607435/why-does-vim-save-files-with-a-extension
@@ -123,13 +112,15 @@ endif
 " Use one of the built-in syntax-highlighting coloring schemes.
 colorscheme slate
 
+" Use some kind of visual formatting to highligh lines that stretch past 80
+" characters.  There are multiple ways to accomplish this, as seen below:
+"
 " Set color column, a visual reminder for good formatting. 
-set cc=80
-hi ColorColumn ctermbg=lightgrey guibg=lightgrey
+"set cc=80
+"hi ColorColumn ctermbg=lightgrey guibg=lightgrey
 " Alternatively, to highlight only characters that go over the line:
-" highlight ColorColumn ctermbg=red
-" call matchadd('ColorColumn', '\%81v', 100)
-" (from https://www.youtu.be/aHm36-na4-4)
+" Reference: vim.wikia.com/wiki/Highlight_long_lines 
+match ErrorMsg '\%80v.\+'
 
 " Display line numbers
 set number
@@ -144,6 +135,9 @@ set expandtab
 " enable tab 'intellisense'
 set smarttab 
 
+" Fold options:
+set foldmethod=indent
+
 "*********************Personalized key maps***********************************
 imap jj <Esc> 
 
@@ -151,4 +145,3 @@ imap jj <Esc>
 " vim.wikia.com/wiki/Insert_current_date_or_time
 nnoremap <F5> "=strftime("%c")<CR>P
 inoremap <F5> <C-R>=strftime("%c")<CR>
-
