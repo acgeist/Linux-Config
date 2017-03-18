@@ -1,7 +1,6 @@
-" An example for a vimrc file.
+" Andrew Geist's .vimrc file
 "
-" Maintainer:	Bram Moolenaar <Bram@vim.org>
-" Last change:	2016 Mar 25
+" Last change: Thu 16 Mar 2017 08:57:43 PM EDT	
 "
 " To use it, copy it to
 "     for Unix and OS/2:  ~/.vimrc
@@ -121,6 +120,35 @@ if has('autocmd')
 	autocmd GUIEnter * set visualbell t_vb=
 endif
 
+" Use one of the built-in syntax-highlighting coloring schemes.
+colorscheme slate
+
 " Set color column, a visual reminder for good formatting. 
 set cc=80
 hi ColorColumn ctermbg=lightgrey guibg=lightgrey
+" Alternatively, to highlight only characters that go over the line:
+" highlight ColorColumn ctermbg=red
+" call matchadd('ColorColumn', '\%81v', 100)
+" (from https://www.youtu.be/aHm36-na4-4)
+
+" Display line numbers
+set number
+
+" From https://learnxinyminutes.com/docs/vim
+" Set indentation options
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+" convert tabs to spaces
+set expandtab 
+" enable tab 'intellisense'
+set smarttab 
+
+"*********************Personalized key maps***********************************
+imap jj <Esc> 
+
+" F5 inserts current date/time.  Reference:
+" vim.wikia.com/wiki/Insert_current_date_or_time
+nnoremap <F5> "=strftime("%c")<CR>P
+inoremap <F5> <C-R>=strftime("%c")<CR>
+
