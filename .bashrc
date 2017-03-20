@@ -121,3 +121,6 @@ fi
 # Reference:
 # https://sanctum.geek.nz/arabesque/vi-mode-in-bash
 set -o vi
+
+# Force tmux to use 256 colors.
+alias tmux='tmux -2'

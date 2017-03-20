@@ -1,17 +1,9 @@
 " Andrew Geist's .vimrc file
 "
-" Last change: Sat 18 Mar 2017 11:24:31 AM EDT 
+" Last change: Mon 20 Mar 2017 07:53:15 PM EDT 
 "
-" To use it, copy it to
-"     for Unix and OS/2:  ~/.vimrc
-"	      for Amiga:  s:.vimrc
+" To use it (on linux), copy it to:  ~/.vimrc
 "  for MS-DOS and Win32:  $VIM\_vimrc
-"	    for OpenVMS:  sys$login:.vimrc
-
-" When started as "evim", evim.vim will already have done these settings.
-if v:progname =~? "evim"
-  finish
-endif
 
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -26,7 +18,7 @@ else
   set backup		" keep a backup file (restore to previous version)
   set undofile		" keep an undo file (undo changes after closing)
 endif
-set history=50		" keep 50 lines of command line history
+set history=1000	" how many lines of command line history to keep
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
@@ -101,6 +93,7 @@ endif
 " stackoverflow.com/questions/607435/why-does-vim-save-files-with-a-extension
 set backupdir=~/Documents/Code/vimtmp,.
 set directory=~/Documents/Code/vimtmp,.
+set undodir=~/Documents/Code/vimtmp,.
 
 " Disable bell. Reference:
 " vim.wikia.com/wiki/Disable_beeping
@@ -109,8 +102,10 @@ if has('autocmd')
 	autocmd GUIEnter * set visualbell t_vb=
 endif
 
-" Use one of the built-in syntax-highlighting coloring schemes.
-colorscheme slate
+" Colorschemes are stored in /usr/share/vim/vim74/colors.
+" New colorschemes can be created and downloaded at 
+" bytefluent.com/vivify/index.php
+colorscheme acg_color
 
 " Use some kind of visual formatting to highligh lines that stretch past 80
 " characters.  There are multiple ways to accomplish this, as seen below:
@@ -131,12 +126,33 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 " convert tabs to spaces
-set expandtab 
+" set expandtab 
 " enable tab 'intellisense'
 set smarttab 
 
 " Fold options:
 set foldmethod=indent
+
+" Set highlighting off by default
+noh
+
+"************************Status Line Stuff************************************
+set laststatus=2
+set statusline=	
+set statusline+=%1*[buff:\ %n]%*
+set statusline+=%2*[%t]%*	
+set statusline+=%3*%y%*
+set statusline+=%4*%m%*
+set statusline+=%=
+set statusline+=%2*[C:%c]%*
+set statusline+=%3*[L:%l/%L]%*
+set statusline+=%4*[char:\ 0x%2.2B]%*	
+
+"set t_Co=256
+hi User1 ctermfg=124	ctermbg=235
+hi User2 ctermfg=74		ctermbg=235
+hi User3 ctermfg=70		ctermbg=235
+hi User4 ctermfg=104	ctermbg=235
 
 "*********************Personalized key maps***********************************
 imap jj <Esc> 
