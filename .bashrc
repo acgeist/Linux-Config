@@ -55,23 +55,27 @@ if [ -n "$force_color_prompt" ]; then
 	color_prompt=yes
     fi
 fi
+###################################PROMPT STUFF################################
+# unix.stackexchange.com/questions/124407/what-color-codes-can-i-use-in-my-ps1-prompt
+# https://wiki.archlinux.org/index.php/Bash/Prompt_customization
+# askubuntu.com/questions/558280/changing-colour-of-text-and-background-of-terminal 
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
+    #PS1="${debian_chroot:+($debian_chroot)}[\!]\[\033[38;5;70m\]\u\[\033[00m\]:\[\033[38;5;74m\]\W\[\033[00m\]\$ "
+	PS1="\[\033[48;5;233;38;5;124m\][\!]\[\033[48;5;233;38;5;65m\]\u\[\033[48;5;233;38;5;242m\]:\[\033[48;5;233;38;5;67m\]\W\[\033[48;5;233;38;5;166m\]$ \[\033[38;5;242;48;5;233m\]"
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u:\W\$ '
+    PS1="${debian_chroot:+($debian_chroot)}\u:\W\$ "
 fi
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    #PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ "
-    ;;
-*)
-    ;;
-esac
+#case "$TERM" in
+#xterm*|rxvt*)
+#    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+#    ;;
+#*)
+#    ;;
+#esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -123,4 +127,5 @@ fi
 set -o vi
 
 # Force tmux to use 256 colors.
+# Reference: 
 alias tmux='tmux -2'

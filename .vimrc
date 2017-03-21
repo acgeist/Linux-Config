@@ -102,7 +102,7 @@ if has('autocmd')
 	autocmd GUIEnter * set visualbell t_vb=
 endif
 
-" Colorschemes are stored in /usr/share/vim/vim74/colors.
+" /usr/share/vim/vim74/colors/acg_color.vim
 " New colorschemes can be created and downloaded at 
 " bytefluent.com/vivify/index.php
 colorscheme acg_color
@@ -139,16 +139,18 @@ noh
 "************************Status Line Stuff************************************
 set laststatus=2
 set statusline=	
-set statusline+=%1*[buff:\ %n]%*
-set statusline+=%2*[%t]%*	
-set statusline+=%3*%y%*
-set statusline+=%4*%m%*
-set statusline+=%=
-set statusline+=%2*[C:%c]%*
-set statusline+=%3*[L:%l/%L]%*
-set statusline+=%4*[char:\ 0x%2.2B]%*	
+set statusline+=%1*[Buffer\ %n]%*		" Buffer number
+set statusline+=%2*[%t]%*				" File name
+set statusline+=%3*%y%*					" File type
+set statusline+=%4*%m%*					" File modified since last save flag
+set statusline+=%=						" Left/right separator
+set statusline+=%2*[C:%c]%*				" Column
+set statusline+=%3*[L:%l/%L]%*			" Current line/total lines
+set statusline+=%4*[char:\ 0x%2.2B]%*	" Hex value of current character
 
-"set t_Co=256
+" To match these colors to colors from the current scheme,
+" reference the current colorscheme, located in 
+" /usr/share/vim/vim74/colors/ and use bytefluent.com/vivify
 hi User1 ctermfg=124	ctermbg=235
 hi User2 ctermfg=74		ctermbg=235
 hi User3 ctermfg=70		ctermbg=235
