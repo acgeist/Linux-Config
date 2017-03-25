@@ -16,8 +16,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=10000
+HISTFILESIZE=10000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -62,7 +62,7 @@ fi
 
 if [ "$color_prompt" = yes ]; then
     #PS1="${debian_chroot:+($debian_chroot)}[\!]\[\033[38;5;70m\]\u\[\033[00m\]:\[\033[38;5;74m\]\W\[\033[00m\]\$ "
-	PS1="\[\033[48;5;233;38;5;124m\][\!]\[\033[48;5;233;38;5;65m\]\u\[\033[48;5;233;38;5;242m\]:\[\033[48;5;233;38;5;67m\]\W\[\033[48;5;233;38;5;166m\]$ \[\033[38;5;242;48;5;233m\]"
+	PS1="\[\033[38;5;124m\][\!]\[\033[38;5;65m\]\u\[\033[38;5;242m\]:\[\033[38;5;67m\]\W\[\033[38;5;166m\]$ \[\033[38;5;242m\]"
 else
     PS1="${debian_chroot:+($debian_chroot)}\u:\W\$ "
 fi
