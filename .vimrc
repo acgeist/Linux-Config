@@ -1,6 +1,6 @@
 " Andrew Geist's .vimrc file
 "
-" Last change: Mon 20 Mar 2017 07:53:15 PM EDT 
+" Last change: Sat 01 Apr 2017 02:21:03 PM EDT
 "
 " To use it (on linux), copy it to:  ~/.vimrc
 "  for MS-DOS and Win32:  $VIM\_vimrc
@@ -55,7 +55,7 @@ if has("autocmd")
   au!
 
   " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
+  autocmd FileType text setlocal textwidth=80
 
   " When editing a file, always jump to the last known cursor position.
   " Don't do it when the position is invalid or when inside an event handler
@@ -163,3 +163,6 @@ imap jj <Esc>
 " vim.wikia.com/wiki/Insert_current_date_or_time
 nnoremap <F5> "=strftime("%c")<CR>P
 inoremap <F5> <C-R>=strftime("%c")<CR>
+"                ***********Snippets************
+" Basic C template.  Reference: https://youtu.be/XA2WjJbmmoM?t=38m24s
+nnoremap ,c :-1read $HOME/.vim/.bp.c<CR>2jA<C-R>=strftime("%c")<CR><Esc>7Go
