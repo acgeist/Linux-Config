@@ -166,3 +166,4 @@ inoremap <F5> <C-R>=strftime("%c")<CR>
 "                ***********Snippets************
 " Basic C template.  Reference: https://youtu.be/XA2WjJbmmoM?t=38m24s
 nnoremap ,c :-1read $HOME/.vim/.bp.c<CR>2jA<C-R>=strftime("%c")<CR><Esc>7Go
+nnoremap ,sh :-1read $HOME/.vim/.bp.sh<CR>o
