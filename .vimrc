@@ -115,7 +115,8 @@ colorscheme acg_color
 "hi ColorColumn ctermbg=lightgrey guibg=lightgrey
 " Alternatively, to highlight only characters that go over the line:
 " Reference: vim.wikia.com/wiki/Highlight_long_lines 
-match ErrorMsg '\%80v.\+'
+" match ErrorMsg '\%80v.\+'
+2mat ErrorMsg '\%81v.'
 
 " Display line numbers
 set number
@@ -164,6 +165,12 @@ imap jj <Esc>
 nnoremap <F5> "=strftime("%c")<CR>P
 inoremap <F5> <C-R>=strftime("%c")<CR>
 "                ***********Snippets************
-" Basic C template.  Reference: https://youtu.be/XA2WjJbmmoM?t=38m24s
+" Reference: https://youtu.be/XA2WjJbmmoM?t=38m24s
+" 
+" .bp.[filetype] = "boilerplate"
+"
+" Basic C template.  
 nnoremap ,c :-1read $HOME/.vim/.bp.c<CR>2jA<C-R>=strftime("%c")<CR><Esc>7Go
+" Bash template
 nnoremap ,sh :-1read $HOME/.vim/.bp.sh<CR>o
+nnoremap ,pe_clean /problem_content<CR>0bdgg/div><CR>0dG:%s/<.\{-}>//g<CR>ggdd<C-v>GI * <Esc>O<Esc>0i/<Esc>Ga/<CR>#include <stdio.h><CR><CR>int main(void){<CR>}<Esc>:w<CR>:noh<CR>O
