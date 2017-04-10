@@ -1,6 +1,6 @@
 " Andrew Geist's .vimrc file
 "
-" Last change: Sat 01 Apr 2017 02:21:03 PM EDT
+" Last change: Tue 04 Apr 2017 11:44:50 AM EDT 
 "
 " To use it (on linux), copy it to:  ~/.vimrc
 "  for MS-DOS and Win32:  $VIM\_vimrc
@@ -38,7 +38,7 @@ endif
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
   syntax on
-  set hlsearch
+"  set hlsearch
 endif
 
 " Only do this part when compiled with support for autocommands.
@@ -120,6 +120,8 @@ colorscheme acg_color
 
 " Display line numbers
 set number
+set relativenumber
+set numberwidth=2
 
 " From https://learnxinyminutes.com/docs/vim
 " Set indentation options
@@ -136,6 +138,7 @@ set foldmethod=indent
 
 " Set highlighting off by default
 noh
+set nohlsearch
 
 "************************Status Line Stuff************************************
 set laststatus=2
@@ -158,19 +161,39 @@ hi User3 ctermfg=70		ctermbg=235
 hi User4 ctermfg=104	ctermbg=235
 
 "*********************Personalized key maps***********************************
-imap jj <Esc> 
+let mapleader = ","
 
-" F5 inserts current date/time.  Reference:
-" vim.wikia.com/wiki/Insert_current_date_or_time
-nnoremap <F5> "=strftime("%c")<CR>P
+imap jj <Esc>
+
+nnoremap <leader>o o<Esc>
+nnoremap <leader>O O<Esc>
+nnoremap <leader><space> yy2p
+nnoremap <leader>x ZZ
+
+" 'ev' = 'edit .vimrc'
+nnoremap <leader>ev :split $MYVIMRC<cr>
+" 'sv' = 'source .vimrc'
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" F5 inserts current date/time.
+" Reference: vim.wikia.com/wiki/Insert_current_date_or_time
+nnoremap <F5> "=strftime(" %c")<CR>P
 inoremap <F5> <C-R>=strftime("%c")<CR>
+
 "                ***********Snippets************
 " Reference: https://youtu.be/XA2WjJbmmoM?t=38m24s
 " 
 " .bp.[filetype] = "boilerplate"
 "
 " Basic C template.  
-nnoremap ,c :-1read $HOME/.vim/.bp.c<CR>2jA<C-R>=strftime("%c")<CR><Esc>7Go
+nnoremap <leader>c :-1read $HOME/.vim/.bp.c<CR>2jA<C-R>=strftime("%c")<CR><Esc>7Go
+" 'df' = 'declare function'
+nnoremap <leader>df 0mzyt{/#include<cr>No<cr><Esc>pa;<Esc>`z
 " Bash template
-nnoremap ,sh :-1read $HOME/.vim/.bp.sh<CR>o
-nnoremap ,pe_clean /problem_content<CR>0bdgg/div><CR>0dG:%s/<.\{-}>//g<CR>ggdd<C-v>GI * <Esc>O<Esc>0i/<Esc>Ga/<CR>#include <stdio.h><CR><CR>int main(void){<CR>}<Esc>:w<CR>:noh<CR>O
+nnoremap <leader>sh :-1read $HOME/.vim/.bp.sh<CR>o
+nnoremap ,pe_clean /problem_content<cr>0bdgg/div><cr>F<i<cr><esc>dG:%s/<.\{-}>//g<cr>ggdd<C-v>GI * <Esc>O<Esc>0i/<Esc>Go<bs>/<cr>#include <stdio.h><cr><cr>int main(void){<cr>}<Esc>:w<cr>:noh<cr>O
+"*********************Learning Vim the Hard way*********************************
+iabbrev @@ acgeist@gmail.com
+iabbrev ssig -- <cr>Andrew Geist <cr>acgeist@gmail.com
+nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
+noremap <leader>' my0v$<esc>i'<esc>0i'<esc>`y
