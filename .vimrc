@@ -1,6 +1,6 @@
 " Andrew Geist's .vimrc file
 "
-" Last change: Tue 04 Apr 2017 11:44:50 AM EDT 
+" Last change: Wed 01 Nov 2017 09:04:00 AM EDT 
 "
 " To use it (on linux), copy it to:  ~/.vimrc
 "  for MS-DOS and Win32:  $VIM\_vimrc
@@ -54,7 +54,7 @@ if has("autocmd")
   augroup vimrcEx
   au!
 
-  " For all text files set 'textwidth' to 78 characters.
+  " For all text files set 'textwidth' to 80 characters.
   autocmd FileType text setlocal textwidth=80
 
   " When editing a file, always jump to the last known cursor position.
@@ -165,10 +165,19 @@ let mapleader = ","
 
 imap jj <Esc>
 
-nnoremap <leader>o o<Esc>
-nnoremap <leader>O O<Esc>
+" For adding a new 'paragraph' of code
 nnoremap <leader><space> yy2p
+" Save and close
 nnoremap <leader>x ZZ
+" Save (uses one less keystroke - worth it!)
+nnoremap <leader>s :w<cr>
+" Uses leader + movement vice Ctrl+W-->movement to change panes in split view.
+" Reference:
+" https://www.quora.com/How-do-I-switch-between-panes-in-split-mode-in-Vim
+nnoremap <leader>k <C-w>k
+nnoremap <leader>j <C-w>j
+nnoremap <leader>h <C-w>h
+nnoremap <leader>l <C-w>l
 
 " 'ev' = 'edit .vimrc'
 nnoremap <leader>ev :split $MYVIMRC<cr>
@@ -189,8 +198,19 @@ inoremap <F5> <C-R>=strftime("%c")<CR>
 nnoremap <leader>c :-1read $HOME/.vim/.bp.c<CR>2jA<C-R>=strftime("%c")<CR><Esc>7Go
 " 'df' = 'declare function'
 nnoremap <leader>df 0mzyt{/#include<cr>No<cr><Esc>pa;<Esc>`z
+" 'sc' = "save c"
+nnoremap <leader>sc 0mz/Last Update:<cr>f:ld$a <C-R>=strftime ("%c")<CR><Esc>`zzz:w<cr> 
 " Bash template
 nnoremap <leader>sh :-1read $HOME/.vim/.bp.sh<CR>o
+" Markdown wiki page template
+nnoremap <leader>mdw :-1read $HOME/.vim/.bp.md<CR>7j$"=strftime(" %c")<CR>PGdd6k0fT
+" When working with Markdown Wiki pages, this command (sw = "save wiki")
+" updates the 'last updated' time at the bottom of the page before saving.
+nnoremap <leader>sw maGf:2ld$"=strftime(" %c")<CR>P'a:w<cr>zz
+" Modify the markdown wiki page template for K & R exercises.
+nnoremap <leader>kr1 ggf(li../<Esc>$a  <Esc>o[C](../c.md)<Esc>jd4dyy2p:read !cat ~/Documents/Code/C/cBook/archive/1-
+nnoremap <leader>kr2 /Exercise<CR>kdd03xi# <Esc>/#<CR>kddO```c<Esc>G2ki```<Esc>
+
 nnoremap ,pe_clean /problem_content<cr>0bdgg/div><cr>F<i<cr><esc>dG:%s/<.\{-}>//g<cr>ggdd<C-v>GI * <Esc>O<Esc>0i/<Esc>Go<bs>/<cr>#include <stdio.h><cr><cr>int main(void){<cr>}<Esc>:w<cr>:noh<cr>O
 "*********************Learning Vim the Hard way*********************************
 iabbrev @@ acgeist@gmail.com

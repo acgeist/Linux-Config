@@ -13,43 +13,7 @@ endif
 set t_Co=256
 let g:colors_name = "acg_color"
 
-"hi IncSearch -- no settings --
-"hi WildMenu -- no settings --
-"hi CTagsMember -- no settings --
-"hi CTagsGlobalConstant -- no settings --
-"hi Ignore -- no settings --
 hi Normal guifg=#d0c692 guibg=#151215 guisp=#151215 gui=NONE ctermfg=186 ctermbg=233 cterm=NONE
-"hi CTagsImport -- no settings --
-"hi CTagsGlobalVariable -- no settings --
-"hi SpellRare -- no settings --
-"hi EnumerationValue -- no settings --
-"hi Float -- no settings --
-"hi Union -- no settings --
-"hi Question -- no settings --
-"hi WarningMsg -- no settings --
-"hi VisualNOS -- no settings --
-"hi ModeMsg -- no settings --
-"hi EnumerationName -- no settings --
-"hi MoreMsg -- no settings --
-"hi SpellCap -- no settings --
-"hi SpellLocal -- no settings --
-"hi DefinedName -- no settings --
-"hi LocalVariable -- no settings --
-"hi SpellBad -- no settings --
-"hi CTagsClass -- no settings --
-"hi Underlined -- no settings --
-"hi clear -- no settings --
-"hi htmlitalic -- no settings --
-"hi htmlboldunderlineitalic -- no settings --
-"hi htmlbolditalic -- no settings --
-"hi htmlunderlineitalic -- no settings --
-"hi htmlbold -- no settings --
-"hi htmlboldunderline -- no settings --
-"hi htmlunderline -- no settings --
-"hi semicolon -- no settings --
-"hi railsuserclass -- no settings --
-"hi rubystringdelimiter -- no settings --
-"hi railsusermethod -- no settings --
 hi SignColumn guifg=#679691 guibg=#482c45 guisp=#482c45 gui=NONE ctermfg=66 ctermbg=238 cterm=NONE
 hi SpecialComment guifg=#57853e guibg=NONE guisp=NONE gui=NONE ctermfg=65 ctermbg=NONE cterm=NONE
 hi Typedef guifg=#e66626 guibg=NONE guisp=NONE gui=NONE ctermfg=166 ctermbg=NONE cterm=NONE
