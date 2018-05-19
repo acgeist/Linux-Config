@@ -1,6 +1,6 @@
 " Andrew Geist's .vimrc file
 "
-" Last update: Fri 10 Nov 2017 07:52:10 PM EST 
+" Last update: Sat 19 May 2018 10:12:31 PM +08 
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -76,6 +76,7 @@ if has('autocmd')
 endif
 
 " /usr/share/vim/vim74/colors/acg_color.vim
+" /usr/local/share/vim/vim81/colors/acg_color.vim
 " New colorschemes can be created and downloaded at 
 " bytefluent.com/vivify/index.php
 colorscheme acg_color
@@ -96,7 +97,7 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 " convert tabs to spaces
-" set expandtab 
+set expandtab 
 " enable tab 'intellisense'
 set smarttab 
 
@@ -157,6 +158,17 @@ nnoremap <leader>da ggdG
 " Reference: vim.wikia.com/wiki/Insert_current_date_or_time
 nnoremap <F5> "=strftime(" %c")<CR>P
 inoremap <F5> <C-R>=strftime("%c")<CR>
+
+"Use TAB to complete when typing words, else inserts TABs as usual.
+function! Tab_Or_Complete()
+	if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
+		return "\<C-N>"
+	else
+		return "\<Tab>"
+	endif
+endfunction
+:inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
+:set dictionary="/usr/dict/words"
 
 "                ***********Snippets************
 " Reference: https://youtu.be/XA2WjJbmmoM?t=38m24s
