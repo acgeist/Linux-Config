@@ -1,6 +1,6 @@
 " Andrew Geist's .vimrc file
 "
-" Last update: Sat 19 May 2018 10:12:31 PM +08 
+" Last update: Sun 20 May 2018 07:22:13 PM KST 
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -37,6 +37,9 @@ if has("autocmd")
   " 'cindent' is on in C files, etc.
   " Also load indent files, to automatically do language-dependent indenting.
   filetype plugin indent on
+
+  " vim.wikia.com/wiki/Dictionary_completions
+  au FileType * execute 'setlocal dict+=~/.vim/'.&filetype.'.txt'
 
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx
