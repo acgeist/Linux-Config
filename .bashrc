@@ -62,7 +62,8 @@ fi
 
 if [ "$color_prompt" = yes ]; then
     #PS1="${debian_chroot:+($debian_chroot)}[\!]\[\033[38;5;70m\]\u\[\033[00m\]:\[\033[38;5;74m\]\W\[\033[00m\]\$ "
-	PS1="\[\033[38;5;124m\][\!]\[\033[38;5;65m\]\u\[\033[38;5;242m\]:\[\033[38;5;67m\]\W\[\033[38;5;166m\]$ \[\033[38;5;242m\]"
+	#PS1="\[\033[38;5;124m\][\!]\[\033[38;5;65m\]\u\[\033[38;5;242m\]:\[\033[38;5;67m\]\W\[\033[38;5;166m\]$ \[\033[38;5;242m\]"
+	PS1="\[\033[38;5;65m\]\u\[\033[38;5;242m\]:\[\033[38;5;67m\]\W\[\033[38;5;166m\]$ \[\033[38;5;242m\]"
 else
     PS1="${debian_chroot:+($debian_chroot)}\u:\W\$ "
 fi
@@ -136,3 +137,5 @@ set -o vi
 # Force tmux to use 256 colors.
 # Reference: 
 alias tmux='tmux -2'
+
+export PYTHONPATH=/Library/Python/2.7/site-packages/:$PYTHONPATH

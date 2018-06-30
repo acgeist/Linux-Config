@@ -149,6 +149,9 @@ nnoremap <leader>j <C-w>j
 nnoremap <leader>h <C-w>h
 nnoremap <leader>l <C-w>l
 
+nnoremap H Hzz
+nnoremap L Lzz
+
 " 'ev' = 'edit .vimrc'
 nnoremap <leader>ev :tabedit $MYVIMRC<cr>
 " 'sv' = 'source .vimrc'
