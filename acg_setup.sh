@@ -22,3 +22,6 @@ sudo wget https://raw.githubusercontent.com/acgeist/Linux-Config/master/acg_colo
 cd ~
 sudo service apache2 start
 echo "<?php phpinfo(); ?>" > /var/www/html/php-test.php
+# TODO: add awk commands to configure apache2
+# change DocumentRoot in /etc/apache2/sites-available/000-default.conf to /srv/www
+# add following line to /etc/apache2/apache2.conf: DirectoryIndex index.php index.html
