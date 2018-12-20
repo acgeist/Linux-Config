@@ -1,6 +1,6 @@
 " Andrew Geist's .vimrc file
 "
-" Last update: Sun 20 May 2018 07:22:13 PM KST 
+" Last update: Wed Dec  5 12:16:36 2018 
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -67,9 +67,10 @@ endif " has("autocmd")
 " Save backup/swap files to a specific directory vice wherever you're
 " currently working. Reference:
 " stackoverflow.com/questions/607435/why-does-vim-save-files-with-a-extension
-set backupdir=~/Documents/Code/vimtmp,.
-set directory=~/Documents/Code/vimtmp,.
-set undodir=~/Documents/Code/vimtmp,.
+" medium.com/@Aenon/vim-swap-backup-undo-git-2bf353caa02f
+set backupdir=.backup/,~/.backup/,/tmp//
+set directory=.swp/,~/.swp/,/tmp//
+set undodir=.undo/,~/.undo/,/tmp//
 
 " Disable bell. Reference:
 " vim.wikia.com/wiki/Disable_beeping
